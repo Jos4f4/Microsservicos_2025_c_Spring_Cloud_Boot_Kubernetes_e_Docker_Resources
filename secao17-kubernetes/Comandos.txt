@@ -1,0 +1,28 @@
+A docker image está disponível aqui https://hub.docker.com/repository/docker/leandrocgsi/hello-kubernetes/general
+E o código fonte dela (em diferentes linguagens) aqui https://github.com/leandrocgsi/hello-kubernetes
+
+docker run -p 8080:8080 leandrocgsi/hello-kubernetes:erudio-0.0.1
+
+https://hub.docker.com/layers/leandrocgsi/hello-kubernetes/erudio-0.0.1/images/sha256-125c8f779730cf3b58f4ae9c7d4dd5b8b5a08ca0855d5dcabd6ac3522f2a3251?context=repo
+
+http://localhost:8080/hello-kubernetes
+
+Antes de executar o comando abaixo apague o contêiner iniciado pelo comando acima ou a porta 8080 estará alocada causando erro.
+
+kubectl create deployment hello-kubernetes --image=leandrocgsi/hello-kubernetes:erudio-0.0.1
+kubectl expose deployment hello-kubernetes --type=LoadBalancer --port=8080
+
+http://localhost:8080/hello-kubernetes
+ 
+kubectl scale deployment hello-kubernetes --replicas=3
+kubectl get pods -o wide
+kubectl delete pod hello-kubernetes-d68b65f76-tfn4w
+kubectl get pods -o wide
+kubectl autoscale deployment hello-kubernetes --max=10 --cpu-percent=70
+kubectl edit deployment hello-kubernetes
+
+Edite o arquivo YML (não use TABS) adicionando a propriedade #minReadySeconds: 15
+
+https://hub.docker.com/layers/leandrocgsi/hello-kubernetes/erudio-0.0.2/images/sha256-64d8fb2a409d610ea258aee7423faddacc39e5df64cc27b9807a7b23037ba3ab?context=repo
+
+kubectl set image deployment hello-kubernetes hello-kubernetes=leandrocgsi/hello-kubernetes:erudio-0.0.2

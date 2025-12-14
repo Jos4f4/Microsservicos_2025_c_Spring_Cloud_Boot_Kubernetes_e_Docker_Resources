@@ -1,0 +1,4 @@
+kubectl config current-context
+kubectl config view
+kubectl version
+kubectl get nodes

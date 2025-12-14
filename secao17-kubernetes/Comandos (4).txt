@@ -1,0 +1,17 @@
+kubectl get componentstatuses
+kubectl get cs
+
+https://pet2cattle.com/2022/09/kubectl-get-componentstatuses
+https://www.reddit.com/r/kubernetes/comments/rxijec/whats_the_replacement_for_kubectl_get_cs/
+https://stackoverflow.com/questions/73407661/componentstatus-is-deprecated-what-to-use-then
+
+kubectl get --raw='/readyz?verbose'
+kubectl get --raw='/livez?verbose'
+kubectl get --raw '/healthz'
+kubectl get --raw '/readyz'
+ 
+https://localhost:6443/
+ 
+https://localhost:6443/livez?verbose
+https://localhost:6443/healthz?verbose
+https://localhost:6443/readyz?verbose
